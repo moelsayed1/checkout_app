@@ -1,5 +1,7 @@
 import 'package:checkout_app/Core/utils/styles.dart';
+import 'package:checkout_app/Features/Checkout/presentation/views/widgets/my_cart_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyCartView extends StatelessWidget {
   const MyCartView({super.key});
@@ -8,20 +10,20 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'My Cart',
           textAlign: TextAlign.center,
           style: Styles.style25,
         ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 32,
+        leading: Center(
+          child: SvgPicture.asset(
+            'assets/images/arrow.svg',
+            height: 24,
           ),
-          onPressed: () {},
         ),
       ),
+      body: MyCartViewBody(),
     );
   }
 }
