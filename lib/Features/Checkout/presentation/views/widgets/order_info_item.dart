@@ -17,7 +17,7 @@ class OrderInfoItem extends StatelessWidget {
         const Spacer(),
         Text(
           value,
-          style: Styles.style18,
+          style: Styles.style20,
         ),
       ],
     );

@@ -18,9 +18,13 @@ class MyCartViewBody extends StatelessWidget {
               const SizedBox(
                 height: 18,
               ),
-              Image.asset('assets/images/Group 6.png'),
+              Expanded(
+                child: Image.asset(
+                  'assets/images/Group 6.png',
+                ),
+              ),
               const SizedBox(
-                height: 20,
+                height: 18,
               ),
               const OrderInfoItem(
                 title: 'Order Subtotal',
@@ -48,7 +52,7 @@ class MyCartViewBody extends StatelessWidget {
                 color: Color(0xffC7C7C7),
               ),
               const SizedBox(
-                height: 16,
+                height: 15,
               ),
               const TotalPrice(
                 title: 'Total',
@@ -59,6 +63,9 @@ class MyCartViewBody extends StatelessWidget {
               ),
               CustomButton(
                 onPressed: () {},
+              ),
+              const SizedBox(
+                height: 16,
               ),
             ],
           ),
