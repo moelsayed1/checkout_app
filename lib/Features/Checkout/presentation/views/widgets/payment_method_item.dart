@@ -13,7 +13,7 @@ class PaymentMethodItem extends StatelessWidget {
     return Row(
       children: [
         AnimatedContainer(
-          duration: Duration(milliseconds: 600),
+          duration: Duration(milliseconds: 400),
           height: 62,
           width: 103,
           decoration: ShapeDecoration(
