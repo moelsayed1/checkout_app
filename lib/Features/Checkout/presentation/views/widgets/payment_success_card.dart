@@ -1,5 +1,6 @@
 import 'package:checkout_app/Core/utils/styles.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/card_info_widget.dart';
+import 'package:checkout_app/Features/Checkout/presentation/views/widgets/paid_barcode_item.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/payment_item_info.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/total_price.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,11 @@ class PaymentSuccessCard extends StatelessWidget {
               height: 30,
             ),
             CardInfoWidget(),
+            Spacer(),
+            PaidBarcodeItem(),
+            SizedBox(
+              height: ((MediaQuery.sizeOf(context).height * 0.2 + 20) / 2) - 29,
+            ),
           ],
         ),
       ),
