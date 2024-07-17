@@ -15,7 +15,7 @@ class PaymentSuccessCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: ShapeDecoration(
-        color: const Color(0xffD9D9D9),
+        color: const Color(0xffEDEDED),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -54,14 +54,14 @@ class PaymentSuccessCard extends StatelessWidget {
               value: 'Sam Louis',
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Divider(
-              height: 60,
-              thickness: 3,
+              height: 40,
+              thickness: 2,
             ),
             SizedBox(
-              height: 24,
+              height: 10,
             ),
             TotalPrice(
               title: 'Total',
