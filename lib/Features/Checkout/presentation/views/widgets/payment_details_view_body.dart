@@ -1,4 +1,5 @@
 import 'package:checkout_app/Core/widgets/custom_button.dart';
+import 'package:checkout_app/Features/Checkout/presentation/views/payment_success_view.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/custom_credit_card.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/payment_method_list_view.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,11 @@ class PaymentDetailsViewBody extends StatefulWidget {
 }
 
 class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
-
   final GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   final cardHolderKey = GlobalKey<FormFieldState<String>>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +45,19 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
               child: CustomButton(
                 title: 'Pay',
                 onPressed: () {
-                  if (formKey.currentState!.validate() && cardHolderKey.currentState!.validate()) {
+                  if (formKey.currentState!.validate() &&
+                      cardHolderKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     cardHolderKey.currentState!.save();
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PaymentSuccessView(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -62,5 +68,3 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
     );
   }
 }
-
-
