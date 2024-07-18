@@ -28,6 +28,10 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
               //     builder: (context) => PaymentDetailsView(),
               //   ),
               // );
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => const PaymentMethodsBottomSheet(),
+              );
             },
           ),
         ],
