@@ -5,11 +5,11 @@ import 'package:checkout_app/Features/Checkout/data/models/payment_intent_model/
 import 'package:checkout_app/Features/Checkout/data/models/payment_intent_model/meta_data.dart';
 import 'package:checkout_app/Features/Checkout/data/models/payment_intent_model/payment_method_options.dart';
 
-PaymentIntent paymentIntentFromJson(String str) => PaymentIntent.fromJson(json.decode(str));
+PaymentIntentModel paymentIntentFromJson(String str) => PaymentIntentModel.fromJson(json.decode(str));
 
-String paymentIntentToJson(PaymentIntent data) => json.encode(data.toJson());
+String paymentIntentToJson(PaymentIntentModel data) => json.encode(data.toJson());
 
-class PaymentIntent {
+class PaymentIntentModel {
   final String? id;
   final String? object;
   final int? amount;
@@ -50,7 +50,7 @@ class PaymentIntent {
   final dynamic transferData;
   final dynamic transferGroup;
 
-  PaymentIntent({
+  PaymentIntentModel({
     this.id,
     this.object,
     this.amount,
@@ -92,7 +92,7 @@ class PaymentIntent {
     this.transferGroup,
   });
 
-  factory PaymentIntent.fromJson(Map<String, dynamic> json) => PaymentIntent(
+  factory PaymentIntentModel.fromJson(Map<String, dynamic> json) => PaymentIntentModel(
     id: json["id"],
     object: json["object"],
     amount: json["amount"],
