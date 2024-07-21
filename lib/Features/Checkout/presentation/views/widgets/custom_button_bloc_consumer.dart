@@ -1,4 +1,5 @@
 import 'package:checkout_app/Core/widgets/custom_button.dart';
+import 'package:checkout_app/Features/Checkout/data/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:checkout_app/Features/Checkout/presentation/manager/cubits/stripe_payment_cubit/stripe_payment_cubit.dart';
 import 'package:checkout_app/Features/Checkout/presentation/manager/cubits/stripe_payment_cubit/stripe_payment_state.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/payment_success_view.dart';
@@ -32,6 +33,8 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           isLoading: state is StripePaymentLoading ? true : false,
           title: 'Continue',
           onPressed: () {
+            PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(amount: 100, currency: 'USD');
+            BlocProvider.of<StripePaymentCubit>(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(
