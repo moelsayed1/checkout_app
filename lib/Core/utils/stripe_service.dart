@@ -18,4 +18,9 @@ class StripeService {
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
   }
+
+  Future initPaymentSheet() async {
+
+    // await Stripe.instance.initPaymentSheet();
+  }
 }
