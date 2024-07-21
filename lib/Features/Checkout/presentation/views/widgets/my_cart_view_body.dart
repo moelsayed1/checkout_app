@@ -1,8 +1,14 @@
+import 'package:checkout_app/Core/utils/api_service.dart';
+import 'package:checkout_app/Core/utils/stripe_service.dart';
 import 'package:checkout_app/Core/widgets/custom_button.dart';
+import 'package:checkout_app/Features/Checkout/data/repos/checkout_repo_impl.dart';
+import 'package:checkout_app/Features/Checkout/presentation/manager/cubits/stripe_payment_cubit/stripe_payment_cubit.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/total_price.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -73,7 +79,18 @@ class MyCartViewBody extends StatelessWidget {
                   // );
                   showModalBottomSheet(
                     context: context,
-                    builder: (context) => const PaymentMethodsBottomSheet(),
+                    builder: (context) => BlocProvider(
+                      create: (context) => StripePaymentCubit(
+                        CheckoutRepoImpl(
+                          StripeService(
+                            ApiService(
+                              Dio(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      child: PaymentMethodsBottomSheet(),
+                    ),
                   );
                 },
               ),
@@ -87,5 +104,3 @@ class MyCartViewBody extends StatelessWidget {
     );
   }
 }
-
-

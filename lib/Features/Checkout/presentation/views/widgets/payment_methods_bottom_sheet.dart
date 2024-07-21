@@ -1,4 +1,4 @@
-import 'package:checkout_app/Core/widgets/custom_button.dart';
+import 'package:checkout_app/Features/Checkout/presentation/views/widgets/custom_button_bloc_consumer.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/widgets/payment_method_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -19,23 +19,11 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
           SizedBox(
             height: 32,
           ),
-          CustomButton(
-            title: 'Continue',
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => PaymentDetailsView(),
-              //   ),
-              // );
-              showModalBottomSheet(
-                context: context,
-                builder: (context) => const PaymentMethodsBottomSheet(),
-              );
-            },
-          ),
+          CustomButtonBlocConsumer(),
         ],
       ),
     );
   }
 }
+
+
