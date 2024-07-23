@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:checkout_app/Core/utils/api_keys.dart';
 import 'package:checkout_app/Core/utils/api_service.dart';
-import 'package:checkout_app/Features/Checkout/data/models/customer_payment_intent_model/customer_payment_intent.dart';
 import 'package:checkout_app/Features/Checkout/data/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:checkout_app/Features/Checkout/data/models/payment_intent_model/payment_intent.dart';
 import 'package:dio/dio.dart';
@@ -49,20 +48,5 @@ class StripeService {
     await initPaymentSheet(
         paymentIntentClientSecret: paymentIntentData.clientSecret!);
     await displayPaymentSheet();
-  }
-
-  Future<CustomerPaymentIntentModel> createCustomerPaymentIntent(
-      CustomerPaymentIntentModel customerIntentModel) async {
-
-
-    var response = await apiService.post(
-      body: customerIntentModel.toJson(),
-      contentType: Headers.formUrlEncodedContentType,
-      url:'https://api.stripe.com/v1/customers',
-      token: ApiKeys.secretKey,
-    );
-    log("${response.statusCode}Res");
-    var customerPaymentIntent = CustomerPaymentIntentModel.fromJson(response.data);
-    return customerPaymentIntent;
   }
 }

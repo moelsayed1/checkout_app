@@ -24,8 +24,9 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           );
         } else if (state is StripePaymentFailure) {
           Navigator.of(context).pop();
-         // Handel the cancelled payment
-          SnackBar snackBar = const SnackBar(content: Center(child: Text("Payment Cancelled")));
+          // Handel the cancelled payment
+          SnackBar snackBar =
+              const SnackBar(content: Center(child: Text("Payment Cancelled")));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
@@ -35,7 +36,11 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           title: 'Continue',
           onPressed: () async {
             PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(amount: 100, currency: 'USD');
+                PaymentIntentInputModel(
+              amount: 100,
+              currency: 'USD',
+              customerId: 'cus_QWcLpXYAz8b5td',
+            );
             BlocProvider.of<StripePaymentCubit>(context)
                 .makePayment(paymentIntentInputModel: paymentIntentInputModel);
           },
