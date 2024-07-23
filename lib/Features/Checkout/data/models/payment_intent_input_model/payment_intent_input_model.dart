@@ -6,7 +6,7 @@ class PaymentIntentInputModel {
   PaymentIntentInputModel({required this.amount, required this.currency});
 
   toJson() => {
-    'amount' : amount,
+    'amount' : amount * 100,
     'currency' : currency,
   };
 }

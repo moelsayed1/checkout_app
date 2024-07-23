@@ -6,12 +6,14 @@ class ApiService {
   ApiService(this.dio);
 
   Future<Response> post({
+    required String url,
     required body,
     required String token,
     String? contentType,
   }) async {
     var response = await dio.post(
-      body,
+      url,
+      data: body,
       options: Options(
         contentType: contentType,
         headers: {

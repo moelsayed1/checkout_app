@@ -3,7 +3,6 @@ import 'package:checkout_app/Features/Checkout/data/models/payment_intent_input_
 import 'package:checkout_app/Features/Checkout/presentation/manager/cubits/stripe_payment_cubit/stripe_payment_cubit.dart';
 import 'package:checkout_app/Features/Checkout/presentation/manager/cubits/stripe_payment_cubit/stripe_payment_state.dart';
 import 'package:checkout_app/Features/Checkout/presentation/views/payment_success_view.dart';
-import 'package:checkout_app/Features/Checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +22,10 @@ class CustomButtonBlocConsumer extends StatelessWidget {
               builder: (context) => const PaymentSuccessView(),
             ),
           );
-        } else if (state is StripePaymentFailure){
-          SnackBar snackBar = SnackBar(content: Text(state.toString()));
+        } else if (state is StripePaymentFailure) {
+          Navigator.of(context).pop();
+         // Handel the cancelled payment
+          SnackBar snackBar = const SnackBar(content: Center(child: Text("Payment Cancelled")));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
@@ -32,19 +33,11 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         return CustomButton(
           isLoading: state is StripePaymentLoading ? true : false,
           title: 'Continue',
-          onPressed: () {
-            PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(amount: 100, currency: 'USD');
-            BlocProvider.of<StripePaymentCubit>(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => PaymentDetailsView(),
-            //   ),
-            // );
-            showModalBottomSheet(
-              context: context,
-              builder: (context) => const PaymentMethodsBottomSheet(),
-            );
+          onPressed: () async {
+            PaymentIntentInputModel paymentIntentInputModel =
+                PaymentIntentInputModel(amount: 100, currency: 'USD');
+            BlocProvider.of<StripePaymentCubit>(context)
+                .makePayment(paymentIntentInputModel: paymentIntentInputModel);
           },
         );
       },

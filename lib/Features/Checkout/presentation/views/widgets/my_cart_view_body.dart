@@ -89,7 +89,7 @@ class MyCartViewBody extends StatelessWidget {
                           ),
                         ),
                       ),
-                      child: PaymentMethodsBottomSheet(),
+                      child: const PaymentMethodsBottomSheet(),
                     ),
                   );
                 },

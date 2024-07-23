@@ -9,18 +9,20 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 16,
-          ),
-          PaymentMethodListView(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomButtonBlocConsumer(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 16,
+            ),
+            PaymentMethodListView(),
+            SizedBox(
+              height: 32,
+            ),
+            CustomButtonBlocConsumer(),
+          ],
+        ),
       ),
     );
   }

@@ -20,7 +20,7 @@ class CheckoutRepoImpl extends CheckoutRepo {
     } catch (e) {
       return left(
         ServerFailure(
-          errMessage: e.toString(),
+          errMessage: "Payment Cancelled or Failed",
         ),
       );
     }

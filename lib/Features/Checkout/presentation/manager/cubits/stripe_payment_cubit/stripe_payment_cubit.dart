@@ -18,7 +18,7 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
 
     data.fold(
       (failure) => emit(
-        StripePaymentFailure(failure.errMessage),
+         StripePaymentFailure("Payment failed"),
       ),
       (success) => emit(
         StripePaymentSuccess(),

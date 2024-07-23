@@ -1,4 +1,6 @@
 class ApiKeys {
 
   static String secretKey = 'sk_test_51Pe2WuRpLKabLfjLWHMJD65jWHfX4wDtdIe4oa848lXOLPRehnQBf8sCNSI3zdxLbwEFSLjKyeKKf1U6MJYJkiTl00bovEUB9W';
+
+  static String publishableKey = 'pk_test_51Pe2WuRpLKabLfjL596fN1PS10bjWpmEimna24yXqcVfpnW0bBGwU35qWT2yB5GwrFCSqTmJ6dUxQG6vjKxSw3eb00I5kc9Z8T';
 }
